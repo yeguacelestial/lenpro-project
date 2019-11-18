@@ -1,0 +1,93 @@
+/**HTML**/
+html {
+    background-color:#03ac03b2;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+/**Globales**/
+h1, h2, h3, h4{
+    font-family: 'PT Sans',sans-serif;
+}
+
+h1 {
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 4rem;
+    line-height: 1.2;
+}
+
+
+/** Header **/
+.site-header {
+    background-color: #2d9c2db2;
+    
+    border: none;
+    border-radius: 40px;
+    background-position: center;
+
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 5%;
+}
+
+.site-header a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.site-header h1{
+    text-align: center;
+    font-weight: 400;
+}
+
+.site-header h1 span{
+    font-weight: 700;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenido-header {
+    color: #ffffff;
+    font-family: 'PT Sans', sans-serif;
+}
+
+/**Body**/
+body {
+    max-width: 100%;
+    max-height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.yo {
+    position: absolute;
+    top: 45px;
+    left: 900px;
+    bottom: 150px;
+    max-width: 40%;
+    max-height: 40%;
+}
+
+.yo img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 5px solid rgba(100,93,93,.45);
+    transition: border-color .3s ease-in-out;
+}
+
+.yo img:hover {
+    border: 5px solid rgb(255, 255, 255);
+    transition: border-color .3s ease-in-out;
+    cursor: pointer;
+}
