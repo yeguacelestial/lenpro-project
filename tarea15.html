@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 15</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+        <h1 style="text-align: center;">Tarea 15</h1>
+        <h2 style="text-align: center;">Suma de matrices</h2>
+        <p class="nombre-subtema">Elaborar un programa en JAVA y RUBY que calcule la suma de dos matrices que ingrese el usuario. (Nota: Validar lo que sea necesario para poder realizar la suma de matrices.)</p>
+        <h4 style="text-align: center;">JAVA</h4>
+        <pre><code>
+                import java.util.Scanner;
+
+                public class SumaDeMatrices {
+                    public static void main (String[] args){
+                        //VARIABLES DE ENTRADA
+                        int n, m;
+                        int i = 0;
+                        int j = 0;
+                
+                        //VARIABLES DE LECTURA
+                        Scanner lect = new Scanner(System.in);
+                
+                        System.out.print("Valor de n (filas): ");
+                        n = lect.nextInt();
+                
+                        if (n == 0 || n < 0){
+                            System.out.println("[-]Error: cantidad n no valida. Saliendo...");
+                            System.exit(0);
+                        }
+                
+                        System.out.print("Valor de m (columnas): ");
+                        m = lect.nextInt();
+                
+                        if (m == 0 || m < 0){
+                            System.out.println("[-]Error: cantidad m no valida. Saliendo...");
+                            System.exit(0);
+                        }
+                
+                        //MATRICES
+                        int[][] matriz1 = new int[n][m];
+                        int[][] matriz2 = new int[n][m];
+                        int[][] matriz_suma = new int[n][m];
+                
+                        //CAPTURA DE VALORES
+                
+                        //Matriz 1
+                        for (i = 0; i < n;i++){
+                            for (j = 0; j < m; j++){
+                                System.out.print("Matriz 1 - Posicion["+i+"]["+j+"] = ");
+                                matriz1[i][j] = lect.nextInt();
+                            }
+                        }
+                
+                        //Matriz 2
+                        for (i=0; i < n;i++){
+                            for (j=0;j < m;j++){
+                                System.out.print("Matriz 2 - Posicion["+i+"]["+j+"] = ");
+                                matriz2[i][j] = lect.nextInt();
+                            }
+                        }
+                
+                        //Suma de ambas matrices
+                        for (i=0;i < n;i++){
+                            for (j=0;j < m;j++){
+                                matriz_suma[i][j] = matriz1[i][j] + matriz2[i][j];
+                            }
+                        }
+                
+                        //Impresion de matrices y suma
+                        System.out.println(" ");
+                        System.out.println("**RESULTADOS**:");
+                        //Impresion de matriz 1
+                        System.out.println("MATRIZ 1: ");
+                        for (i=0;i < n;i++){
+                            for (j=0;j < m;j++){
+                                System.out.print(matriz1[i][j] + " ");
+                            }
+                            System.out.println(" ");
+                        }
+                
+                        System.out.println(" ");
+                
+                        //Impresion de matriz 2
+                        System.out.println("MATRIZ 2: ");
+                        for (i=0;i < n;i++){
+                            for (j=0; j < m; j++){
+                                System.out.print(matriz2[i][j] + " ");
+                            }
+                            System.out.println(" ");
+                        }
+                
+                        System.out.println(" ");
+                
+                        //Impresion de matriz suma
+                        System.out.println("SUMA DE AMBAS MATRICES: ");
+                        for (i=0;i < n;i++){
+                            for (j=0; j < m; j++){
+                                System.out.print(matriz_suma[i][j] + " ");
+                            }
+                            System.out.println(" ");
+                        }
+                    }
+                }
+        </code></pre>
+        <h4 style="text-align: center;">RUBY</h4>
+        <pre><code>
+            =begin
+                Suma de matrices
+            =end
+            
+            #Metodo para convertir a entero
+            def to_int(string)
+                Integer(string)
+            rescue ArgumentError
+                nil
+            end
+            
+            #Inicializacion de variables
+            i = 0
+            j = 0
+            
+            #Pedir filas
+            print "Valor de n(filas): "
+            lect = gets.chomp
+            n = to_int(lect)
+            
+            if (n.instance_of? Integer) == true
+                if n == 0 or n < 0
+                    puts "El valor de filas debe ser mayor a 0."
+            
+                else
+                    #Pedir columnas
+                    print "Valor de m(columnas): "
+                    lect = gets.chomp
+                    m = to_int(lect)
+            
+                    if (m.instance_of? Integer) == true
+                        if m == 0 or m < 0
+                            puts "El valor de las columnas debe ser mayor a 0."
+                            puts "Presiona ENTER para salir."
+                            gets.chomp
+                        else
+                            #MATRICES
+                            matriz1 = Array.new(n){Array.new(m)}
+                            matriz2 = Array.new(n){Array.new(m)}
+                            matriz_suma = Array.new(n){Array.new(m)}
+            
+                            #Captura de valores
+                            #Matriz 1
+                            for i in 0..n-1 do
+                                for j in 0..m-1 do
+                                    print "M1 - Posicion[#{i}][#{j}]: "
+                                    lectura = gets.chomp
+                                    matriz1[i][j] = to_int(lectura)
+                                end
+                            end
+            
+                            #Matriz 2
+                            for i in 0..n-1 do
+                                for j in 0..m-1 do
+                                    print "M2 - Posicion[#{i}][#{j}]: "
+                                    lectura = gets.chomp
+                                    matriz2[i][j] = to_int(lectura)
+                                end
+                            end
+            
+                            #Suma de matriz1+matriz2
+                            for i in 0..n-1 do
+                                for j in 0..m-1 do
+                                    matriz_suma[i][j] = matriz1[i][j] + matriz2[i][j]
+                                end
+                            end
+            
+                            #Impresion de matrices y suma
+                            puts "**RESULTADOS**"
+                            #Matriz 1
+                            puts "MATRIZ 1: "
+                            for i in 0..n-1 do
+                                for j in 0..m-1 do
+                                    print "#{matriz1[i][j]} "
+                                end
+                                puts " "
+                            end
+                            puts "\n"
+            
+                            #Matriz 2
+                            puts "MATRIZ 2: "
+                            for i in 0..n-1 do
+                                for j in 0..m-1 do
+                                    print "#{matriz2[i][j]} "
+                                end
+                                puts " "
+                            end
+                            puts "\n"
+            
+                            #Matriz suma
+                            puts "SUMA DE AMBAS MATRICES: "
+                            for i in 0..n-1 do
+                                for j in 0..m-1 do
+                                    print "#{matriz_suma[i][j]} "
+                                end
+                                puts " "
+                            end
+                        end
+                        puts "Presiona ENTER para salir."
+                        gets.chomp
+            
+                    else
+                        puts "Valor de columnas invalido."
+                        puts "Presiona ENTER para salir."
+                        gets.chomp
+                    end
+            
+                end
+            
+            else
+                puts "Valor de filas invalido."
+            end
+        </code></pre>
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea14.html">Anterior (Tarea 14)</a>
+                    <a href="tarea16.html">Siguiente (Tarea 16)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

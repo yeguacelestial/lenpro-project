@@ -13,6 +13,24 @@ body {
 }
 
 /** Globales **/
+pre {
+    margin-left: 10%;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 80%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
 .contenedor {
     max-width: 1200px;
     width: 95%;
@@ -91,6 +109,35 @@ img{
 
 
 /** Botones **/
+.btn-tareas {
+    justify-content: center;
+    background-color: black;
+    padding: 5rem;
+    margin: 3rem 4rem;
+
+    max-width: 20%;
+
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 10px solid rgba(111, 108, 112, 0.45);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-tareas:hover{
+    border: 10px solid rgba(128, 1, 195, 1);
+    cursor: pointer;
+    background-color: rgba(128, 1, 195, 0.45);
+    transition: background-color .3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+    .btn-tareas {
+        display: inline-block;
+        flex: 0 0 auto;
+    }
+}
+
 .btn-personal {
     background-color: #ffce00;
     padding: 1rem 4rem;
@@ -114,7 +161,7 @@ img{
 }
 
 @media (min-width: 768px) {
-    .btn {
+    .btn-personal {
         display: inline-block;
         flex: 0 0 auto;
     }
@@ -252,7 +299,8 @@ img{
 }
 
 .personales-contenedor {
-    padding: 5rem;
+    margin: 0 auto;
+    padding: 10rem;
 }
 
 .contenido-principal {

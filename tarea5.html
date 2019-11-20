@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 5</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+        <h1 style="text-align: center;">Tarea 5</h1>
+        <h2 style="text-align: center;">SCHEME</h2>
+        <h2 class="nombre-subtema">SÍMBOLOS</h2>
+        <p>
+                Un símbolo es lo que en otros lenguajes se denomina identificador. En
+                Scheme los símbolos e identificadores pueden contener caracteres
+                internacionales (Unicode, UTF-8). El intérprete DrScheme guarda los
+                ficheros de texto en esa codificación.
+            </p>
+            <p>
+                'hola
+            </p>
+            <p>
+                (symbol 'hola-que&lt;&gt;)
+            </p>
+            <p>
+                (symbol-&gt;string 'hola-que&lt;&gt;)
+            </p>
+            <p>
+                'mañana
+            </p>
+            <p>
+                'lápiz ; aunque sea posible, no vamos a usar acentos en los símbolos
+            </p>
+            <p>
+                ; pero sí en los comentarios
+            </p>
+            <p>
+                (symbol? 'hola) ; #t
+            </p>
+            <p>
+                (symbol? "hola") ; #f
+            </p>
+            <p>
+                (symbol? #f) ; #f
+            </p>
+            <p>
+                (equal? 'hola 'hola)
+            </p>
+            <p>
+                (equal? 'hola "hola")
+            </p>
+            <p>
+                Diferencia entre símbolos y cadenas: un símbolo (identificador) es un
+                objeto simple y una cadena es un objeto compuesto. El intérprete de Scheme
+                codifica un símbolo mediante un único número, su valor hash. Otra
+                diferencia bastante clara: un símbolo no puede contener un espacio, pero
+                una cadena sí.
+            </p>
+            
+        <h2 class="nombre-subtema">SINTAXIS</h2>
+        <div align="center">
+                <table width="520" cellspacing="0" cellpadding="0" border="1">
+                    <tbody>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p align="center">
+                                    <strong>Función</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p align="center">
+                                    <strong>Descripción</strong>
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="520" valign="top">
+                                <p align="center">
+                                    <strong> Condicionales básicas</strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>if</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Condicional simple
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (if &lt;condicion&gt;
+                                    <br/>
+                                    &lt;valor de verdad verdadero&gt;
+                                    <br/>
+                                    &lt;valor de verdad falso&gt;)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>cond</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Condicional anidado
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (cond
+                                    <br/>
+                                    [(&lt;condicion&gt;)
+                                    <br/>
+                                    (&lt;valor de verdad de verdadero&gt;)]
+                                    <br/>
+                                    [(&lt;condicion&gt;)
+                                    <br/>
+                                    (&lt;valor de verdad de verdadero&gt;)]
+                                    <br/>
+                                    ...
+                                    <br/>
+                                    [else (&lt;valor de verdad de falso&gt;)])
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>else</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Sentencia condicional en el cond que determina que el
+                                    siguiente valor de verdad es falso
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    [else (&lt;valor de verdad de falso&gt;)])
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>#t o true</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Valor de verdad de verdadero
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (if &lt;condicion&gt; #t ...) o
+                                    <br/>
+                                    (if &lt;condicion&gt; true ...)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>#f o false</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Valor de verdad de falso
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (if &lt;condicion&gt; ... #f) o
+                                    <br/>
+                                    (if &lt;condicion&gt; ... false)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>and</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Operador condicional y, las condiciones tienen que ser
+                                    verdaderas para que arroje un valor de verdad verdadero
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (&lt;condicion a&gt; and &lt;condicion b&gt;)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>or</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Operador condicional o, con que solo una de las
+                                    condiciones se cumpla se arrojara un valor de verdad
+                                    verdadero
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (&lt;condicion a&gt; or &lt;condicion b&gt;)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>not</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Operador condicional no, invierte la condición, si la
+                                    condición arroja verdadero, con el not esa misma
+                                    condición arrojara falso
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (not &lt;condicion&gt;)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="520" valign="top">
+                                <p align="center">
+                                    <strong>Más de condicionales</strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>number?</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Evalúa si el dato es un numero
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (number? 123)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>string?</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Evalúa si el dato es una cadena de texto
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (string? "hola mundo") -&gt; #t
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>string=?</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Evalúa si el dato (implicando que sea una cadena de
+                                    texto) es
+                                    <br/>
+                                    igual a otra
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (string=? "hola mundo" "hola mundo")
+                                    <br/>
+                                    -&gt; #t
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>integer?</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Evalúa si el dato es un numero
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (integer? 123) -&gt; #t
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>negative?</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Evalúa si un número es negativo
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (negative? -123) -&gt; #t
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>positive?</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Evalúa si un número es positivo
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (positive? 123) -&gt; #t
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>zero?</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Evalúa si un número es cero o no
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (zero? 0) -&gt; #t
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="520" valign="top">
+                                <p align="center">
+                                    <strong>Numéricos</strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>abs</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Arroja el valor absoluto de un numero
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (abs -123) -&gt; 123
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>sqr</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Arroja el valor de un número elevado al cuadrado
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (sqr 5) -&gt; 25
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>expt</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Arroja el valor de un número elevado a una potencia
+                                    indicada por el usuario, el segundo numero ingresado es
+                                    el exponente
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (expt 5 2) -&gt; 25
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>sqrt</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Arroja la raiz cuadrada de un numero
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (sqrt 25) -&gt; 5
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>ceiling</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Aproxima un numero real al siguiente entero, aproxima a
+                                    techo
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (ceiling 25.5) -&gt; 26
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>floor</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Aproxima un numero real a su equivalente en entero,
+                                    aproxima a piso
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (floor 25.5) -&gt; 25
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>pi</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    El valor numérico de pi
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    pi -&gt; #i3.141592653589793
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="520" valign="top">
+                                <p align="center">
+                                    <strong> Otros</strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>define-struct</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Es la declaración para crear una estructura
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (define-struct ejemplo
+                                    <br/>
+                                    (&lt;numero&gt; &lt;numero&gt; &lt;cadena de
+                                    texto&gt;))
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>list o '</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Es la declaración para crear una lista
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (list 1 2 3 4) o '(1 2 3 4)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>cons</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Es la declaración para crear una lista, siempre se
+                                    finaliza con un empty y cerrando todas las
+                                    declaraciones
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (cons 1 (cons 2 (cons 3 empty)))
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>append</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Une dos listas
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (append (list 1 2 3)
+                                    <br/>
+                                    (list 4 5 6)) -&gt;
+                                    <br/>
+                                    (list 1 2 3 4 5 6) o
+                                    <br/>
+                                    (append (cons 1 (cons 2 empty))
+                                    <br/>
+                                    (cons 3 (cons 4 empty))) -&gt;
+                                    <br/>
+                                    (list 1 2 3 4)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>empty</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Un tipo de dato que representa nulo o vacío, sirve para
+                                    finalizar listas
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (cons empty empty)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="74" valign="top">
+                                <p>
+                                    <strong>empty?</strong>
+                                </p>
+                            </td>
+                            <td width="196" valign="top">
+                                <p>
+                                    Evalúa si un elemento es nulo o vacío
+                                </p>
+                            </td>
+                            <td width="250" valign="top">
+                                <p>
+                                    (empty? (list 1 2)) -&gt; #f
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+
+        <h2 class="nombre-subtema">ESQUELETO DE LOS PROGRAMAS</h2>
+        <img src="img/t5img1.png" alt="Img 1">
+
+        <h2 class="nombre-subtema">APLICACIÓN A DESCARGAR PARA EDITAR Y EJECUTAR</h2>
+        <p>DrScheme es el mejor IDE de Scheme, de acuerdo a la comunidad de StackOverflow. Tiene integrado un compilador JIT, y pueden producirse ejecutables stand-alone.</p>
+
+        <h2 class="nombre-subtema">A QUE TIPO DE PARADIGMA PERTENECE</h2>
+        <p>Paradigma funcional puro</p>
+
+        <h2 class="nombre-subtema">EJECUCIÓN DE UN PROGRAMA</h2>
+        <ul>
+                <li align="center">
+                    Programa que dibuja un triángulo
+                </li>
+            </ul>
+            <p>
+                (define (T) ;lo que hacemos con esta función es la figura con la que se
+                ;llenara el triángulo
+                <br/>
+                (display "*"))
+                <br/>
+                <br/>
+                (define (dibuje cant) ;esta funcion me dibuja los "*" pasando un espacio
+                :entre ellos
+                <br/>
+                (do ((i 0 (+ i 1)))
+                <br/>
+                ((= i cant) )
+                <br/>
+                (t)
+                <br/>
+                (display " ")))
+                <br/>
+                <br/>
+                (define (triangulo) ;y esta es la que me dibuja el triangulo aquí defino
+                ;que el tamaño sea de 10 *'s
+                <br/>
+                (do ((i 1 (+ i 1)));observa como se hace el ciclo :D
+                <br/>
+                ((= i 10) )
+                <br/>
+                (dibuje i);llamada a la funcion
+                <br/>
+                (newline)));pasa renglon
+            </p>
+
+            <h2 style="text-align: center;">Ejecución</h2>
+            <img src="img/t5img2.png" alt="Img 2">
+            
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea4.html">Anterior (Tarea 4)</a>
+                    <a href="tarea6.html">Siguiente (Tarea 6)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

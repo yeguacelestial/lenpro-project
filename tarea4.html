@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 4</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+    <h1 style="text-align: center;">Tarea 4</h1>
+    <h2 style="text-align: center;">PYTHON</h2>
+    <h2 class="nombre-subtema">SÍMBOLOS</h2>
+    <img src="img/t4img1.png" alt="Img 1">
+    <img src="img/t4img2.png" alt="Img 2">
+    <img src="img/t4img3.png" alt="Img 3">
+    <img src="img/t4img4.png" alt="Img 4">
+
+    <h2 class="nombre-subtema">SINTAXIS</h2>
+    <h2 align="center">
+            Reglas Generales de la Sintaxis de Python
+        </h2>
+        <p>
+            La sintaxis de Python se rige por una serie de Reglas Generales que sirven
+            para dar orden, coherencia y limpieza al lenguaje.
+        </p>
+        <p>
+            Un programa escrito en Python se divide en un número determinado de líneas
+            lógicas, cuyo final está determinado por el <em>token</em> o señal de nueva
+            línea (<em>NEWLINE</em>).
+        </p>
+        <p>
+            De esta forma, se va organizando el código, siguiendo reglas sintácticas
+            fundamentales que constituyen la <strong>Estructura Lexicográfica</strong>
+            del lenguaje y que gobiernan la forma en la que escribes un programa en
+            Python.
+        </p>
+        <h3 align="center">
+            Líneas Físicas vs Líneas Lógicas
+        </h3>
+        <p>
+            Las <strong>líneas físicas</strong> son secuencias de caracteres que
+        concluyen con el caracter de fin de línea (<code>\n</code> en sistemas    <em>Unix-Like</em> o <code>\r\n</code> en Windows).
+        </p>
+        <p>
+            <strong>Nota:</strong>
+            Las líneas físicas en la práctica no son más que las líneas que enumera tu
+            editor de código.
+        </p>
+        <p>
+            Las <strong>líneas lógicas</strong> por su parte, son componentes lógicos
+            de la sintaxis de Python, cuyo final está determinado por el <em>token</em>
+            o señal de nueva línea (<em>NEWLINE</em>). Este <em>token</em> determina el
+            fin de una línea lógica y da comienzo de otra.
+        </p>
+        <p>
+            Una línea lógica puede estar compuesta por una o varias líneas físicas de
+            un archivo de texto plano.
+        </p>
+        <p>
+            Las líneas físicas se pueden unir para formar una única línea lógica para
+            lo cual puedes emplear el caracter de barra invertida <code>\</code>
+            colocado como caracter de escape justo antes de la secuencia de fin de
+            línea. Este proceder se denomina <strong>Unión Explícita de Líneas</strong>
+            y es considerado como una mala práctica y generalmente debe evitarse, pero
+            aún así, es sintácticamente legal hacerlo.
+        </p>
+        <p>
+            Uno de los riesgos que implica este tipo de unión de líneas físicas, es que
+            por error incluyas, por ejemplo, un caracter de espacio inmediatamente
+            detrás del caracter <code>\</code>, lo cual constituye un error sintáctico
+            que puede ser difícil de encontrar. Por suerte, la mayoría de los editores
+            e IDEs actuales incluyen la opción de eliminar automáticamente los
+            caracteres de espacio al final de las líneas físicas. Un ejemplo de unión
+            explicita es:
+        </p>
+        <pre># Una línea lógica muy largaaaaaa</pre>
+        <pre>circle_area = math.pi * radius ** 2.0 if radius &gt; 0.0 and radius != float('inf') \</pre>
+        <pre>    else None</pre>
+        <p>
+            Las líneas físicas también se pueden unir en una única línea lógica,
+        empleado los pares de caracteres <code>()</code>, <code>[]</code> y<code>{}</code>. Esto se conoce como    <strong>Unión Implícita de Líneas</strong>.
+        </p>
+        <p>
+            Si una línea lógica se inicia con un paréntesis <code>(</code>, se
+            extenderá por tantas líneas físicas como sea necesario y solo terminará con
+            el caracter de cierre, es decir, <code>)</code>. Esto también se cumple
+            para los corchetes <code>[]</code> y las llaves <code>{}</code>.
+        </p>
+        <p>
+            La unión implícita es la forma recomendada y generalmente empleada por la
+            mayoría de los programadores con experiencia en Python. Un ejemplo de este
+            tipo de unión de líneas físicas podría ser:
+        </p>
+        <pre>&gt;&gt;&gt; print(</pre>
+        <pre>... 'Hello',</pre>
+        <pre>... 'World!'</pre>
+        <pre>... )</pre>
+        <pre>Hello World!</pre>
+        <h3 align="center">
+            Sentencias Simples y Compuestas
+        </h3>
+        <p>
+            Existen dos tipos de sentencias en Python:
+        </p>
+        <ul type="disc">
+            <li>
+                <strong>Las sentencias simples</strong>
+                , que deben completarse en una única línea lógica, como por ejemplo:
+            </li>
+        </ul>
+        <pre>&gt;&gt;&gt; from sys import platform</pre>
+        <ul type="disc">
+            <li>
+                <strong>Las sentencias compuestas</strong>
+                , que deben comenzar con una cláusula de sentencia compuesta y deben
+                contener sentencias simples y/o compuestas indentadas, a las cuales se
+                les suele llamar cuerpo o bloque. La cláusula inicial o encabezado de
+        una sentencia compuesta inicia siempre con una palabra clave (<em>keyword</em>) y termina con el caracter de dos puntos        <code>:</code>. Por ejemplo:
+            </li>
+        </ul>
+        <pre>&gt;&gt;&gt; if a &gt; b:</pre>
+        <pre>...     print(a, 'is greater than', b)</pre>
+        <p>
+            A diferencia de otros lenguajes, Python no tiene declaraciones u otros
+            elementos sintácticos de alto nivel, solo sentencias, que generalmente
+            ocupan una o varias líneas físicas en tu editor.
+        </p>
+        <p>
+            El fin de una línea física, generalmente determina el fin de la mayoría de
+            las sentencias. Las líneas físicas terminan con la secuencia de fin de
+            línea <code>\n</code> (En Windows se acepta <code>\r\n</code>):
+        </p>
+        <pre>&gt;&gt;&gt; var = 'Welcome to Python Scouts!' # Línea física que termina con la secuencia de fin de línea \n</pre>
+        <pre>&gt;&gt;&gt; </pre>
+        <p>
+            Además, es válido emplear el caracter punto y coma <code>;</code> para
+            terminar las sentencias:
+        </p>
+        <pre>&gt;&gt;&gt; print(var); # Sentencia que termina con ;</pre>
+        <pre>Welcome to Python Scouts!</pre>
+        <p>
+            O para incluir varias sentencias simples en una mima línea física:
+        </p>
+        <pre>&gt;&gt;&gt; var1 = 0; var2 = 1 # Empleo del ; para separar dos sentencias en una misma línea física</pre>
+        <pre>&gt;&gt;&gt; var1</pre>
+        <pre>0</pre>
+        <pre>&gt;&gt;&gt; var2</pre>
+        <pre>1</pre>
+        <p>
+            El empleo del <code>;</code> para separar varias sentencias en una misma
+            línea física es considerado una mala práctica, pues atenta contra la
+            legibilidad del código y no se apega al estilo de codificación aceptado en
+            Python, por tanto, se recomienda evitarlo.
+        </p>
+        <h3 align="center">
+            Indentación
+        </h3>
+        <p>
+            Python, a diferencia de otros lenguajes, no emplea llaves <code>{}</code> o
+            estructuras <code>begin...end</code> para definir bloques de código. Para
+        esto, el lenguaje se vale de lo que se conoce como    <strong>indentación</strong>, que no es más que la inclusión de espacios o
+            caracteres de tabulación al inicio de las líneas lógicas.
+        </p>
+        <p>
+            La indentación del código tiene su origen en la necesidad de hacer que el
+            código sea más legible y comprensible. Esta es la razón fundamental por la
+            cual Python la hace parte de su sintaxis, esencialmente para mejorar la
+            legibilidad, comprensión y sencillez del código, que es sin dudas, uno de
+            los rasgos identificativos y más valorados del lenguaje.
+        </p>
+        <p>
+        Las sentencias pueden ser agrupadas dentro de una cláusula o cabecera (    <em>header</em>) de sentencia compuesta mediante la indentación.
+        </p>
+        <p>
+            Python usa la indentación de las líneas lógicas, para determinar la
+            agrupación de sentencias y su pertenencia a determinado bloque o cuerpo de
+            sentencia compuesta. Por ejemplo:
+        </p>
+        <pre>def printer():</pre>
+        <pre>    # Los espacios al inicio de estas líneas forman la indentación</pre>
+        <pre>    print('Hello World!')</pre>
+        <pre>    print('Welcome to Python Scouts!')</pre>
+        <pre>    # Las sentencias anteriores forman el bloque o cuerpo de la función printer()</pre>
+        <pre> </pre>
+        <pre>printer() # El llamado a printer() queda fuera del bloque, pues ya no hay indentación</pre>
+        <p>
+            Como ya sabes, la indentación puede definirse con caracteres de espacio (se
+            recomienda el empleo de 4 espacios, que es considerado el estilo óptimo de
+            Python) o de tabulación. Es recomendable no mezclar ambos tipos de
+            caracteres en un mismo fragmento de código.
+        </p>
+        <p>
+            La indentación debe ser la misma (igual cantidad de espacios), al menos
+            para las líneas que componen un mismo bloque de código y la primera
+            sentencia de un archivo de código no debe tener indentación.
+        </p>
+        <p>
+            Como ves, la indentación es un componente sumamente importante en la
+            sintaxis de Python.
+        </p>
+        <h3 align="center">
+            Comentarios
+        </h3>
+        <p>
+            Un <strong>comentario</strong> es una secuencia de caracteres que comienza
+            con el caracter de numeral <code>#</code> y continúa hasta el fin de la
+            línea física.
+        </p>
+        <p>
+            Las líneas físicas que comienzan con <code>#</code> son ignoradas
+            completamente por el intérprete de Python. En realidad estas líneas están
+            dirigidas a los programadores/mantenedores/clientes del código, que en
+            muchas ocasiones serás tú mismo.
+        </p>
+        <p>
+            Los comentarios son útiles para indicar lo que estas haciendo y sobre todo
+            por qué lo haces, siempre y cuando no sea algo obvio, en cuyo caso resultan
+            redundantes y superfluos. Por ejemplo:
+        </p>
+        <pre>&gt;&gt;&gt; # Esto es un comentario que comienza con # y es ignorado por Python</pre>
+        <pre>&gt;&gt;&gt; </pre>
+        <pre>&gt;&gt;&gt; # Le asigno el valor 0 a count &lt;= Esto es un comentario innecesario</pre>
+        <pre>&gt;&gt;&gt; count = 0</pre>
+        <pre>&gt;&gt;&gt; </pre>
+        <pre>&gt;&gt;&gt; # Inicializo count a 0 para contar las veces que... &lt;= Mejor</pre>
+        <pre>&gt;&gt;&gt; count = 0</pre>
+        <p>
+        Existe un tipo especial de comentario denominado    <strong>declaración de codificación</strong> (<em>encoding declaration</em>
+        ), que se incluye en la primera o segunda línea de un módulo o    <em>script</em> Python para declarar explícitamente la codificación del
+            texto contenido en el archivo. Un ejemplo de este tipo de declaración es:
+        </p>
+        <table cellpadding="0" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <pre>1</pre>
+                        <pre>2</pre>
+                        <pre>3</pre>
+                    </td>
+                    <td>
+                        <pre># -*- coding: utf-8 -*-</pre>
+                        <pre> </pre>
+                        <pre># La declaración de codificación se coloca en la primera o segunda línea del módulo</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            En la mayoría de los casos, este tipo de declaración no es necesaria, pues
+            casi todos los IDEs y editores de texto manejan esto de forma transparente.
+        En el caso de los módulos de Python 3.x, el estándar de codificación es el    <code>UTF-8</code>, mientras que en la rama 2.x del lenguaje, el estándar
+            suele ser <code>ASCII</code>.
+        </p>
+        <p>
+            Finalmente, en muchas ocasiones incluirás en tu código un tipo de
+        comentario que se denomina <strong>comentarios en linea</strong> (    <em>in-line comments</em>). Se trata de un comentario que escribes a
+            continuación de una sentencia o expresión. Por ejemplo:
+        </p>
+        <pre>if temperature &lt;= 273:  # Validar la temperatura &lt;= Comentario en línea</pre>
+        <pre>    raise ValueError('Wrong temperature value')</pre>
+        <p>
+            Cuando unes las líneas físicas mediante el mecanismo de unión implícita que
+            viste con anterioridad, puedes incluir comentarios en linea, como por
+            ejemplo:
+        </p>
+        <pre>month_names = ['January', 'February', 'March',  # Primer trimestre</pre>
+        <pre>               'April', 'May', 'June',  # Segundo trimestre</pre>
+        <pre>               'July', 'August', 'September',  # Tercer trimestre</pre>
+        <pre>               'October', 'November', 'December']  # Cuarto trimestre</pre>
+        <h3 align="center">
+            Espacios y Líneas en Blanco
+        </h3>
+        <p>
+            Los espacios en blanco pueden ser empleados libremente en el interior de
+            las sentencias (entre <em>tokens</em>). A excepción del inicio de línea,
+            donde los espacios se interpretan como indentación y determinan la
+            pertenencia de una sentencia simple a una compuesta.
+        </p>
+        <p>
+            Las líneas en blanco, contienen solo caracteres de espacio, tabulación y
+            fin de línea. Su empleo está estrechamente ligado a la legibilidad del
+            código.
+        </p>
+        <p>
+            Por otro lado, si estás en una sesión interactiva del intérprete o Ciclo de
+            Lectura, Evaluación, Impresión (REPL por sus siglas en Inglés), una línea
+            en blanco representa la conclusión de una sentencia compuesta.
+        </p>
+        <p>
+            Existen recomendaciones bien establecidas en el PEP 8 con relación al
+            empleo de espacios y líneas en blanco y es aconsejable que las sigas a fin
+            de que tu código presente la apariencia de un código Python bien escrito.
+        </p>
+        <h3 align="center">
+            <em>Tokens</em>
+            del Lenguaje
+        </h3>
+        <p>
+            Los <em><strong>tokens</strong></em> son componentes lexicográficos
+            elementales que forman cada una de las líneas lógicas. En la sintaxis de
+            Python se reconocen los <em>tokens</em> o señales siguiente:
+        </p>
+        <ul type="disc">
+            <li>
+                <em><strong>NEWLINE</strong></em>
+                : determina el fin de una línea lógica y el comienzo de otra
+            </li>
+            <li>
+                <em><strong>INDENT</strong></em>
+                : indentación de las sentencias dentro de una sentencia compuesta
+            </li>
+            <li>
+                <em><strong>DEDENT</strong></em>
+                : fin de indentación que determina el fin de una sentencia compuesta
+            </li>
+            <li>
+                <strong>Identificadores</strong>
+                (<em>identifiers</em>): nombres que identifican a variables, funciones,
+                clases, métodos, constantes, módulos, paquetes, etc. Los
+        identificadores comienzan con letras (<code>A – Z</code>,        <code>a – z</code>) o con guiones bajos (<code>_</code>), seguidos de
+                cero o más letras, guiones bajos o dígitos (<code>0 – 9</code>). Python
+                es un lenguaje <em>Case Sensitive</em>, lo que significa que las letras
+                mayúsculas son distintas de las minúsculas
+            </li>
+            <li>
+                <strong>Palabras clave o reservadas</strong>
+                (<em>keywords</em>): palabras con significado especial para el
+                lenguaje, que no pueden ser empleadas como identificadores. Algunas
+        palabras clave son sentencia simples (Ej. <code>break</code>,<code>continue</code>), otros, cláusulas de sentencias compuesta (Ej.<code>def</code>, <code>class</code>, <code>for</code>,<code>while</code>), mientras que otras son operadores (Ej.        <code>and</code>, <code>or</code>, <code>is</code>, <code>in</code>).
+        Las palabras reservadas de Python se pueden consultar tecleando en el        <em>prompt</em> intérprete, las sentencias siguientes:
+            </li>
+        </ul>
+        <pre>&gt;&gt;&gt; import keyword</pre>
+        <pre>&gt;&gt;&gt; keyword.kwlist</pre>
+        <pre>['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue',</pre>
+        <pre> 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global',</pre>
+        <pre> 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass',</pre>
+        <pre> 'raise', 'return', 'try', 'while', 'with', 'yield']</pre>
+        <ul type="disc">
+            <li>
+                <strong>Literales</strong>
+                (<em>literals</em>): valores numéricos o de cadena de caracteres que
+                aparecen directamente escritos en el código. Por ejemplo:
+            </li>
+        </ul>
+        <pre>&gt;&gt;&gt; 'Hello World!' # Literal de string</pre>
+        <pre>'Hello World!'</pre>
+        <pre>&gt;&gt;&gt; 1452.25 # Literal de float</pre>
+        <pre>1452.25</pre>
+        <pre>&gt;&gt;&gt; 15 # Literal de int</pre>
+        <pre>15</pre>
+        <pre>&gt;&gt;&gt; 1_000_000 # Literal de int con guión bajo de agrupación (versión 3.6)</pre>
+        <pre>1000000</pre>
+        <ul type="disc">
+            <li>
+                <strong>Operadores</strong>
+                (<em>operators</em>): caracteres empleados para denotar operaciones
+                diversas tales como: aritméticas, lógicas, de asignación, etc. Los
+                operadores actuales del lenguaje son:
+            </li>
+        </ul>
+        <pre>+       -       *       **      /       //      %      @</pre>
+        <pre>&lt;&lt;      &gt;&gt;      &amp;       |       ^       ~</pre>
+        <pre>&lt;       &gt;       &lt;=      &gt;=      ==      !=</pre>
+        <ul type="disc">
+            <li>
+                <strong>Delimitadores</strong>
+                (<em>delimiters</em>): caracteres empleados para delimitar literales,
+                líneas lógicas, entre otras. Python incluye los delimitadores
+                siguientes:
+            </li>
+        </ul>
+        <pre>(       )       [       ]       {       }</pre>
+        <pre>,       :       .       ;       @       =       -&gt;</pre>
+        <pre>+=      -=      *=      /=      //=     %=      @=</pre>
+        <pre>&amp;=      |=      ^=      &gt;&gt;=     &lt;&lt;=     **=</pre>
+        <p>
+            Todos estos elementos y algunos otros más, forman parte de la sintaxis de
+            Python, y los emplearás en mayor o menor medida en tu código.
+        </p>
+        
+
+    <h2 class="nombre-subtema">ESQUELETO DE LOS PROGRAMAS</h2>
+    <img src="img/t4img5.png" alt="Img 5">
+
+    <h2 class="nombre-subtema">APLICACIÓN A DESCARGAR PARA EDITAR Y EJECUTAR</h2>
+    <p>Python 3.7 (Intérprete)</p>
+           <p> Para editar código, pueden usarse cualquiera de los IDEs  como Sublime Text, Spyder, PyCharm, Visual Studio Code, etc.
+            </p>
+
+    <h2 class="nombre-subtema">A QUE TIPO DE PARADIGMA PERTENECE</h2>
+    <p align="center">
+            <strong><em>MULTIPARADIGMA</em></strong>
+        </p>
+        <p align="center">
+            <em>-Orientado a Objetos</em>
+        </p>
+        <p align="center">
+            <em>-Programación imperativa</em>
+        </p>
+        <p align="center">
+            <em>-Programación funcional</em>
+        </p>
+
+    <h2 class="nombre-subtema">EJECUCIÓN DE UN PROGRAMA</h2>
+    <img src="img/t4img6.png" alt="Img 6">
+    <img src="img/t4img7.png" alt="Img 7">
+
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea3.html">Anterior (Tarea 3)</a>
+                    <a href="tarea5.html">Siguiente (Tarea 5)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

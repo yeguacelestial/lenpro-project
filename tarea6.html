@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 6</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+        <h1 style="text-align: center;">Tarea 6</h1>
+        <h2 style="text-align: center;">HASKELL</h2>
+        <h2 class="nombre-subtema">SÍMBOLOS</h2>
+        <img src="img/t6img1.png" alt="Img 6">
+
+        <h2 class="nombre-subtema">SINTAXIS</h2>
+        <p>
+                Se creará una función simple que te regañará de forma diferente en función
+                de tu IMC (índice de masa corporal). Tu IMC es igual a tu altura dividida
+                por tu peso al cuadrado. Si tu IMC es menor que 18,5 tienes infrapeso. Si
+                estas en algún lugar entre 18,5 y 25 eres del montón. Si tienes entre 25 y
+                30 tienes sobrepeso y si tienes más de 30 eres obeso. Así que aquí tienes
+                la función (no estamos calculando nada ahora, simplemente obtiene un IMC y
+                te regaña)
+            </p>
+            <pre>bmiTell :: (RealFloat a) =&gt; a -&gt; String</pre>
+            <pre>bmiTell bmi</pre>
+            <pre>    | bmi &lt;= 18.5 = "Tienes infrapeso ¿Eres emo?"</pre>
+            <pre>    | bmi &lt;= 25.0 = "Supuestamente eres normal... Espero que seas feo."</pre>
+            <pre>    | bmi &lt;= 30.0 = "¡Estás gordo! Pierde algo de peso gordito."</pre>
+            <pre>    | otherwise   = "¡Enhorabuena, eres una ballena!"</pre>
+            <p>
+                Las guardas se indican con barras verticales que siguen al nombre de la
+                función y sus parámetros. Normalmente tienen una sangría y están alineadas.
+                Una guarda es básicamente una expresión booleana. Si se evalúa a True,
+                entonces el cuerpo de la función correspondiente es utilizado. Si se evalúa
+                a False, se comprueba la siguiente guarda y así sucesivamente. Si llamamos
+                a esta función con 24.3, primero comprobará si es menor o igual que 18.5.
+                Como no lo es, seguirá a la siguiente guarda. Se comprueba la segunda
+                guarda y como 24,3 es menor que 25, se devuelve la segunda cadena.
+            </p>
+            <p>
+                Muchas veces la última guarda es otherwise. otherwise está definido
+                simplemente como otherwise
+                <tt>
+                </tt>
+                =
+                <tt>
+                </tt>
+                True y acepta todo. Es muy similar al ajuste de patrones, solo se aceptan
+                si la entrada satisface un patrón, pero las guardas comprueban condiciones
+                booleanas. Si todas las guardas de una función se evalúan a False (y no
+                hemos dado otra guarda otherwise), la evaluación falla y continuará hacia
+                el siguiente <strong>patrón</strong>. Por esta razón los patrones y las
+                guardas encajan tan bien juntas. Si no existe ningún patrón ni ninguna
+                guarda aceptable se lanzará un error.
+            </p>
+            
+
+        <h2 class="nombre-subtema">ESQUELETO DE LOS PROGRAMAS</h2>
+        <p>
+                La estructura de un programa de Haskell es sorprendentemente simple. Tienes
+                una función principal que hace IO, y eso es todo. Así que lo básico:
+            </p>
+            <p>
+                module Main where
+            </p>
+            <p>
+                addition a b = a + b
+            </p>
+            <p>
+                main :: IO ()
+            </p>
+            <p>
+                main = do let z = addition 5 3
+            </p>
+            <p>
+                putStrLn $ "The result is: " ++ show z
+            </p>
+            <p>
+                Ahora puedes compilar esto en un programa simple usando algo como:
+            </p>
+            <p>
+                ghc --make Main.hs -o program
+            </p>
+            <p>
+                y debe producir un ejecutable llamado programa.
+            </p>
+            <p>
+                Un “grupo de funciones” en Haskell se llama “módulo”. Puedes tener
+                múltiples módulos, cada uno en su propio archivo:
+            </p>
+            <p>
+                module Blarg (exportedFunction) where
+            </p>
+            <p>
+                helper a b = ... -- this will *not* be exported
+            </p>
+            <p>
+                exportedFunction a b = helper a b -- this *will* be exported
+            </p>
+            <p>
+                Solo los identificadores entre paréntesis serán exportados; el resto está
+                oculto. Si no incluye los paréntesis, todo se exportará de forma
+                predeterminada.
+            </p>
+            
+
+        <h2 class="nombre-subtema">APLICACIÓN A DESCARGAR PARA EDITAR Y EJECUTAR</h2>
+        <ul>
+                <li>
+                    Atom IDE
+                </li>
+                <li>
+                    Visual Studio Code
+                </li>
+                <li>
+                    IntelliJ Plugin for Haskell
+                </li>
+                <li>
+                    EclipseFP plugin for Eclipse IDE
+                </li>
+            </ul>            
+
+        <h2 class="nombre-subtema">A QUE TIPO DE PARADIGMA PERTENECE</h2>
+           <p>Paradigma funcional</p>
+
+        <h2 class="nombre-subtema">EJECUCIÓN DE UN PROGRAMA</h2>
+        <p>
+                Si has aprendido otro lenguaje, tu primer programa probablemente haya sido
+                "Hola, mundo!", así que hagamos eso:
+            </p>
+            <pre>Prelude&gt; "Hola, mundo!"</pre>
+            <pre>"Hola, mundo!"</pre>
+            <p>
+                El sistema Haskell evaluó la cadena, e imprimió el resultado. También
+                podemos intentar una variante, que imprime directamente a la salida
+                estándar:
+            </p>
+            <pre>Prelude&gt; putStrLn "Hola mundo"</pre>
+            <pre>Hola mundo</pre>
+            <p>
+                Usando un compilador Haskell, como GHC, puedes compilar el código para
+                producir un ejecutable. Crea un archivo fuente <strong>hola.hs</strong> que
+                contenga:
+            </p>
+            <pre>main = putStrLn "Hola, mundo!"</pre>
+            <p>
+                Y compílalo con:
+            </p>
+            <pre>    $ ghc -o hola hola.hs</pre>
+            <p>
+            Ahora podrás ejecutar el programa (<strong>./hola</strong> en sistema Unix,    <strong>hola.exe</strong> en Windows):
+            </p>
+            <pre>    $ ./hola</pre>
+            <pre>    Hola, mundo!</pre>
+            
+
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea5.html">Anterior (Tarea 5)</a>
+                    <a href="tarea7.html">Siguiente (Tarea 7)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

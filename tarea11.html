@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 11</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+    <h1 style="text-align: center;">Tarea 11</h1>
+    <h2 style="text-align: center;">Serie B</h2>
+    <p class="nombre-subtema">Construya un programa en JAVA y RUBY que calcule e imprima la siguiente serie para los N primeros términos <br><h3 style="font-weight: 100; text-align: center;">-1, 2, 2, -3, 4, 4, 4, -5, 6, 6, 6, 6, -7...</h3></p>
+    <h4 style="text-align: center;">JAVA</h4>
+    <pre><code>
+            /* 
+            Serie B:
+            -1, 2, 2, -3, 4, 4, 4, -5, 6, 6, 6, 6, -7...
+        */
+        import java.util.Scanner;
+        
+        public class SerieB {
+            public static void main(String[] args){
+                //VARIABLES INICIALES
+                int val_neg = -1; //Contador de valores negativos
+                int val_pos = 2; //Contador de valores positivos
+                int n; //Valor de entrada
+                int cont_principal = 0; //Contador principal
+                int cont_pos = 3; //Contador numeros positivos
+                int valor; //Valor a imprimir
+                int cantidad_pos; //Cantidad de veces a repetir
+        
+                //Variable de lectura
+                Scanner lect = new Scanner(System.in);
+        
+                //Pedir n
+                System.out.print("Valor de n: ");
+                n = lect.nextInt();
+        
+                //Secuencia iterativa principal
+                for (int i=0; i < n; i++){
+                    //Numeros impares negativos
+                    if (val_neg%2 != 0){
+                        valor = val_neg;
+                        if (i==n-1){
+                            System.out.print(valor + ".\n");
+                            System.exit(0);
+                        }
+                        System.out.print(valor + ", ");
+                        val_neg -= 2;
+                        cont_principal++;
+                    }
+        
+                    //Numeros pares positivos
+                    if (val_pos%2 == 0){
+                        for (cantidad_pos = 0; cantidad_pos < cont_pos; cantidad_pos++){
+                                //El valor se repite antes de aumentar
+                                for (int in = 0; in < cont_pos; in++){
+                                    valor = val_pos;
+                                    
+                                    if (in == cont_pos-1){
+                                        valor = val_neg;
+                                        val_neg -= 2;
+                                    }
+        
+                                    //Si el contador principal llega a ser n, el programa finaliza.
+                                    if (cont_principal == n-1){
+                                        System.out.print(valor + ".\n");
+                                        System.exit(0);
+                                    }
+        
+                                    System.out.print(valor + ", ");
+                                    cont_principal++;
+                                }
+        
+                                //Aumentar dos unidades del valor
+                                val_pos+=2;
+                                cont_pos++;
+                        }
+                    }//Fin Numeros pares positivos
+                    
+                }
+            }
+        }
+        
+    </code></pre>
+    <h4 style="text-align: center;">RUBY</h4>
+    <pre><code>
+        =begin
+            Serie B
+            -1, 2, 2, -3, 4, 4, 4, -5, 6, 6, 6, 6, -7...
+        =end
+        
+        #VALIDAR ENTERO DE N
+        def to_int(string)
+            Integer(string)
+        rescue ArgumentError
+            nil
+        end
+        
+        #INICIO DEL PROGRAMA
+        
+        #VARIABLES
+        val_neg = -1
+        val_pos = 2
+        cont_principal = 0
+        cont_pos = 3
+        
+        #LECTURA
+        print "n: "
+        cadena = gets.chomp
+        
+        #Pasar a entero
+        n = to_int(cadena)
+        
+        #Comparar tipo de archivo convertido
+        if (n.instance_of? Integer) == true
+        
+            #SECUENCIA ITERATIVA PRINCIPAL
+            for i in 0..n-1 do
+                #NUMEROS IMPARES NEGATIVOS
+                if val_neg%2 != 0
+                    valor = val_neg
+                    if i==n-1
+                        print "#{valor}.\n"
+                        exit
+                    end
+                    print "#{valor}, "
+                    val_neg -= 2
+                    cont_principal += 1
+                end
+        
+                #NUMEROS PARES POSITIVOS
+                if val_pos%2 == 0
+                    for cantidad_pos in 0..cont_pos-1 do
+                        #REPETIR EL VALOR ANTES DE AUMENTAR
+                        for ineg in 0..cont_pos-1 do
+                            valor = val_pos
+        
+                            if ineg == cont_pos-1
+                                valor = val_neg
+                                val_neg -= 2
+                            end
+        
+                            if cont_principal == n-1
+                                print "#{valor}.\n"
+                                puts "Presiona ENTER para salir."
+                                gets.chomp
+                                exit
+                            end
+        
+                            print "#{valor}, "
+                            cont_principal += 1
+                        end
+        
+                        #Aumentar dos unidades del valor
+                        val_pos += 2
+                        cont_pos += 1
+                    end
+                end
+        
+            end
+        
+            
+        else
+            puts "#{cadena} no es un valor entero."
+        end
+        
+        puts "Presiona ENTER para salir."
+        gets.chomp
+    </code></pre>
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea10.html">Anterior (Tarea 10)</a>
+                    <a href="tarea12.html">Siguiente (Tarea 12)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 10</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+        <h1 style="text-align: center;">Tarea 10</h1>
+        <h2 style="text-align: center;">Serie A</h2>
+        <p class="nombre-subtema">Construya un programa en JAVA y RUBY que calcule e imprima la siguiente serie para los N primeros términos <br><h3 style="font-weight: 100; text-align: center;">1, 8, 243, 16384, 1953125...</h3></p>
+        <h4 style="text-align: center;">JAVA</h4>
+        <pre><code>
+                //TAREA 10 - Serie A 
+                //Iteración
+                //Formula de la serie: n^(2n-1)
+                
+        import java.util.Scanner;
+        import java.lang.Math;
+        import java.lang.Double;
+        import java.math.*;
+        
+        public class SerieA
+            {
+            public static void main(String[] args){
+                
+                int n;
+                Double formula;
+                BigInteger resultado = BigInteger.valueOf((int)0);
+                Scanner lectura = new Scanner(System.in);
+                
+                System.out.print("n => ");
+                n = lectura.nextInt();
+                
+                for (int i=1;i<=n;i++){
+                    formula = Math.pow(i,2*i - 1);
+                    //resultado = formula.intValue();
+                    resultado = BigDecimal.valueOf(formula).toBigInteger();
+                        
+                        if (i==n){
+                                System.out.print(resultado + ".\n");
+                                System.exit(0);
+                            }
+                    System.out.print(resultado + ", ");
+                }
+                
+                //System.out.println("El valor de n es " + valor);
+                
+            }
+        
+        }
+        </code></pre>
+        <h4 style="text-align: center;">RUBY</h4>
+        <pre><code>
+                #Validar valor entero
+                def to_int(string)
+                    Integer(string)
+                rescue ArgumentError
+                    nil
+                end
+                
+                resultado = 0
+                
+                print "n => " 
+                cadena = gets.chomp
+                
+                if cadena
+                    n = to_int(cadena)
+                    for i in 1..n do
+                        formula = i**(2*i - 1)
+                        resultado = formula
+                
+                        if i == n 
+                            puts "#{resultado}."
+                            puts "Presiona ENTER para salir."
+                            gets.chomp
+                            exit
+                        else
+                            puts "#{resultado}, "
+                        end
+                    end
+                
+                else
+                    puts "Valor invalido."
+                end
+                
+                puts "Presiona ENTER para salir."
+                gets.chomp
+        </code></pre>
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea9.html">Anterior (Tarea 9)</a>
+                    <a href="tarea11.html">Siguiente (Tarea 11)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

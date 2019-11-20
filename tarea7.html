@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 7</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div>
+            <!--cierre de barra-->
+        </div>
+        <!--cierre contenedor-->
+    </header>
+
+    <main>
+        <h1 style="text-align: center;">Tarea 7</h1>
+        <h2 style="text-align: center;">Lenguaje R</h2>
+        <h2 class="nombre-subtema">SÍMBOLOS</h2>
+        <img src="img/t7img1.png" alt="Img 1">
+
+        <h2 class="nombre-subtema">SINTAXIS</h2>
+        <p>
+            La sintaxis en R es muy similar a la de otros lenguajes de programación como JAVA o C . Las <strong>normas básicas</strong> que definen la sintaxis de R son:
+        </p>
+        <ul type="disc">
+            <li>
+                No se tienen en cuenta los espacios en blancos: podemos o no dejar espacios para que el código se puede ordenar de forma adecuada y poder entenderse.
+            </li>
+            <li>
+                Se distinguen las mayúsculas y minúsculas: para variables en el código, podemos crear diferentes variables con nombres iguales pero alternando mayúsculas y minúsculas.
+            </li>
+            <li>
+                Se pueden incluir comentarios: como vimos anteriormente los comentarios se utilizan para añadir información en el código.
+            </li>
+            <li>
+                No es necesario terminar cada sentencia con el carácter de punto y coma (;): en la mayoría de lenguajes de programación, es obligatorio terminar cada sentencia con este carácter. En en cambio R podemos o no terminar de esta forma.
+            </li>
+            <li>
+                Lenguaje orientado a objetos: todo en R son objetos, las variables, datos, funciones y resultados, que se generan en R son objetos estos se modifican o manipulan con operadores o funciones (que a su vez son objetos).
+            </li>
+        </ul>
+        <p>
+            <a name="more"></a>
+        </p>
+        <p>
+            R se divide en cinco clases básicas o atómicas, estas son bloques de construcción o elementos que conforman a los objetos, son 5 clases principales: numérica o doble, entero, complejo, lógico y de carácter.
+        </p>
+
+        <h2 class="nombre-subtema">ESQUELETO DE LOS PROGRAMAS</h2>
+        <img src="img/t7img2.png" alt="Img 2">
+
+        <h2 class="nombre-subtema">APLICACIÓN A DESCARGAR PARA EDITAR Y EJECUTAR</h2>
+        <ul>
+            <li align="center">
+                <em>RStudio</em>
+            </li>
+            <li align="center">
+                <em>Visual Studio Code</em>
+            </li>
+            <li align="center">
+                <em>Atom</em>
+            </li>
+        </ul>
+
+        <h2 class="nombre-subtema">A QUE TIPO DE PARADIGMA PERTENECE</h2>
+        <p align="center">
+            <strong><em>MULTIPARADIGMA</em></strong>
+        </p>
+        <ul>
+            <li align="center">
+                <em>Funcional</em>
+            </li>
+            <li align="center">
+                <em>Vectorial</em>
+            </li>
+            <li align="center">
+                <em>Imperativo</em>
+            </li>
+            <li align="center">
+                <em>Procedural</em>
+            </li>
+            <li align="center">
+                <em>Orientado a objetos</em>
+            </li>
+        </ul>
+
+        <h2 class="nombre-subtema">EJECUCIÓN DE UN PROGRAMA</h2>
+        <p>
+            En R es posible definir funciones con un número variable de argumentos. Para ello, la sintaxis es:
+        </p>
+        <p>
+            <strong>f = function(x, ...) { cuerpo de la función }</strong>
+        </p>
+        <p>
+            <strong>f = function(...,x) { cuerpo de la función }</strong>
+        </p>
+        <p>
+            En el primer caso, la función podría llamarse sin hacer referencia explícita a x (por ejemplo f(2) ).
+            <br/> En el segundo caso deberíamos especificar f(x=2), dado que el sistema, al encontrar primero los
+            <br/> argumentos variables, no podría saber si nos estamos refiriendo a x o a uno de los argumentos
+            <br/> variables.
+        </p>
+        <p>
+            Vamos a poner un ejemplo en dos fases. En primer lugar, para entender como funciona al tema,
+            <br/> definiremos una función que simplemente devuelve sus argumentos:
+        </p>
+        <p>
+            <strong>&gt; f = function(...){ L &lt;- list(...) ; return(L)}</strong>
+            <br/>
+            <strong>&gt; f(1,2,3)</strong>
+            <br/>
+            <strong>[[1]]</strong>
+            <br/>
+            <strong>[1] 1</strong>
+            <br/>
+            <strong>[[2]]</strong>
+            <br/>
+            <strong>[1] 2</strong>
+            <br/>
+            <strong>[[3]]</strong>
+            <br/>
+            <strong>[1] 3</strong>
+        </p>
+        <p>
+            <strong>&gt; f(c(1,2),c(3,4,5))</strong>
+            <br/>
+            <strong>[[1]]</strong>
+            <br/>
+            <strong>[1] 1 2</strong>
+            <br/>
+            <strong>[[2]]</strong>
+            <br/>
+            <strong>[1] 3 4 5</strong>
+        </p>
+        <p>
+            Así pues, es variable el número de argumentos, tanto como el número de elementos de cada uno.
+        </p>
+        <p>
+            Vamos a aprovechar esta facilidad para definir una función que devuelva algunas medidas resumen
+            <br/> de las distribuciones que se le pasen como argumento. La entrada a la función será una serie de
+            <br/> conjuntos de datos, y la salida la media, varianza, mínimo y máximo de cada uno de los conjuntos.
+            <br/>
+        </p>
+        <p>
+            <strong>f = function(...)</strong>
+            <br/>
+            <strong>{</strong>
+            <br/>
+            <strong>datos = list(...)</strong>
+            <br/>
+            <strong>
+                medias = lapply(datos,mean) # lapply aplica una función sobre una lista
+            </strong>
+            <br/>
+            <strong>varianzas = lapply(datos,var)</strong>
+            <br/>
+            <strong>maximos = lapply(datos,max)</strong>
+            <br/>
+            <strong>minimos = lapply(datos,min)</strong>
+        </p>
+        <p>
+            <strong>for(i in 1:length(datos))</strong>
+            <br/>
+            <strong>{</strong>
+            <br/>
+            <strong>
+                cat("Distribución ",i,": \n") # La función cat es para visualizar cosas
+            </strong>
+            <br/>
+            <strong>
+                cat("media: ",medias[[i]],"varianza: ",varianzas[[i]],"maximo:
+                ",maximos[[i]],"minimo: ",minimos[[i]],"\n")
+            </strong>
+            <br/>
+            <strong>cat("------------------------------------------------\n")</strong>
+            <br/>
+            <strong>}</strong>
+        </p>
+        <p>
+            <strong>}</strong>
+        </p>
+        <p>
+            Veamos un ejemplo sencillo:
+        </p>
+        <p>
+            <strong>&gt; f(c(1,2),c(1,3,5,7),c(-1,2,-5,6,9))</strong>
+        </p>
+        <p>
+            <strong>Distribución 1 :</strong>
+            <br/>
+            <strong>media: 1.5 varianza: 0.5 maximo: 2 minimo: 1</strong>
+            <br/>
+            <strong>------------------------------------------------</strong>
+            <br/>
+            <strong>Distribución 2 :</strong>
+            <br/>
+            <strong>media: 4 varianza: 6.666667 maximo: 7 minimo: 1</strong>
+            <br/>
+            <strong>------------------------------------------------</strong>
+            <br/>
+            <strong>Distribución 3 :</strong>
+            <br/>
+            <strong>media: 2.2 varianza: 30.7 maximo: 9 minimo: -5</strong>
+            <br/>
+            <strong>------------------------------------------------</strong>
+        </p>
+        <p>
+            O también:
+        </p>
+        <p>
+            <strong>&gt; x = rnorm(100)</strong>
+            <br/>
+            <strong>&gt; y = runif(50)</strong>
+            <br/>
+            <strong>&gt; f(x,y)</strong>
+        </p>
+        <p>
+            <strong>Distribución 1 :</strong>
+            <br/>
+            <strong>
+                media: 0.1616148 varianza: 0.87319 maximo: 2.201592 minimo: -2.143932
+            </strong>
+            <br/>
+            <strong>------------------------------------------------</strong>
+            <br/>
+            <strong>Distribución 2 :</strong>
+            <br/>
+            <strong>
+                media: 0.4985783 varianza: 0.08253697 maximo: 0.9881924 minimo:
+                0.01329678
+            </strong>
+            <br/>
+            <strong>------------------------------------------------</strong>
+        </p>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea6.html">Anterior (Tarea 6)</a>
+                    <a href="tarea8.html">Siguiente (Tarea 8)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

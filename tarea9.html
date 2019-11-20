@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 9</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+        <h1 style="text-align: center;">Tarea 9</h1>
+        <h2 style="text-align: center;">Conversión de monedas</h2>
+        <p class="nombre-subtema">Elabora un programa en JAVA y RUBY que a través de un menú de opciones permita al usuario convertir de pesos a las siguientes monedas: <br>1. Dolar <br>2. Euro <br>3. Yen(Japonés) <br>4. Dólar de Hong Kong.</p>
+        <h4 style="text-align: center;">JAVA</h4>
+        <pre><code>
+// LIBRERIAS DE CREACION DE OBJETOS JBUTTON
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class Monedas extends JFrame{
+	
+	//BOTONES
+	private JButton dolar,euro,yen,dolar_hk;
+	
+	public Monedas(){
+		
+		//TITULO DE LA VENTANA
+		super ("Conversion de Monedas (MXN)");
+		
+		//CONTENEDOR DE BOTONES
+		Container contenedor = getContentPane();
+		contenedor.setLayout ( new FlowLayout() );
+		
+		//CREACION DE BOTONES
+			//BOTON DOLAR
+			dolar = new JButton ("Dolar");
+			contenedor.add(dolar);
+			
+			//BOTON EURO
+			euro = new JButton ("Euro");
+			contenedor.add(euro);
+			
+			//BOTON YEN
+			yen = new JButton ("Yen");
+			contenedor.add(yen);
+			
+			//BOTON DOLAR HONG KONG
+		    dolar_hk = new JButton ("Dolar de Hong Kong");
+			contenedor.add(dolar_hk);
+		   
+		   //Instancia de clase interna "ManejadorBoton"
+		   //se usa en el manejo de eventos del boton
+		   ManejadorBoton manejador = new ManejadorBoton();
+		   dolar.addActionListener( manejador );
+		   euro.addActionListener ( manejador );
+		   yen.addActionListener ( manejador );
+		   dolar_hk.addActionListener ( manejador );
+		   
+		   setSize(500,100);
+		   show();
+	} //Fin de constructor Main
+	
+	public static void main (String[] args){
+		Main ap = new Main();
+		
+		ap.addWindowListener(
+			new WindowAdapter() {
+				public void windowClosing ( WindowEvent e ){
+					System.exit(0);
+				} // Fin de metodo windowClosing
+			} //Fin de clase interna WindowAdapter
+			);//fin de addWindowListener
+	} //Fin de main
+	
+	//Clase interna para el manejo de datos del boton
+	private class ManejadorBoton implements ActionListener {
+		public void actionPerformed ( ActionEvent e ){
+			JOptionPane.showMessageDialog (
+				null,
+				"Seleccionaste: " + e.getActionCommand()
+			);
+			
+        //CONDICIONES
+            //DOLAR (0.051)
+            if (e.getActionCommand() == "Dolar"){
+                try{
+                    Object regresarValor = JOptionPane.showInputDialog (
+                        null,
+                        "MXN: ",
+                        "MXN => Dolar",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        null,
+                        null
+                    );
+                    
+                    double valor_mxn = Double.parseDouble(regresarValor.toString());
+                    double valor_dolar = 0.051 * valor_mxn;
+                    
+                    JOptionPane.showMessageDialog (
+                        null,
+                        valor_mxn + " MXN => " + valor_dolar + " Dolares"
+                    );
+                }
+                catch(Exception error){
+                    JOptionPane.showMessageDialog(null,
+                        "[-]ERROR: Inserta un valor correcto."
+                    );
+                }
+            }
+            
+            //EURO (0.047)
+            if (e.getActionCommand() == "Euro"){
+                try{
+                    Object regresarValor = JOptionPane.showInputDialog (
+                        null,
+                        "MXN: ",
+                        "MXN => Euro",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        null,
+                        null
+                    );
+                    
+                    double valor_mxn = Double.parseDouble(regresarValor.toString());
+                    double valor_euro = 0.047 * valor_mxn;
+                    
+                    JOptionPane.showMessageDialog (
+                        null,
+                        valor_mxn + " MXN => " + valor_euro + " Euros"
+                    );
+                }
+                
+                catch (Exception error){
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "[-]ERROR: Inserta un valor correcto."
+                    );
+                }
+            }
+            
+            //YEN (5.53)
+            if (e.getActionCommand() == "Yen"){
+                try {
+                    Object regresarValor = JOptionPane.showInputDialog(
+                        null,
+                        "MXN: ",
+                        "MXN => Yen",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        null,
+                        null
+                    );
+                    
+                    double valor_mxn = Double.parseDouble (regresarValor.toString());
+                    double valor_yen = 5.53 * valor_mxn;
+                    
+                    JOptionPane.showMessageDialog (
+                        null,
+                        valor_mxn + " MXN => " + valor_yen + " Yenes"
+                    );
+                }
+                
+                catch (Exception error){
+                    JOptionPane.showInputDialog(
+                        null,
+                        "[-]ERROR: Inserta un valor correcto."
+                    );
+                }
+            }
+            
+            //DOLAR HONG KONG (0.40)
+            if (e.getActionCommand() == "Dolar de Hong Kong"){
+                try {
+                    Object regresarValor = JOptionPane.showInputDialog(
+                        null,
+                        "MXN: ",
+                        "MXN => Dolar de Hong Kong",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        null,
+                        null
+                    );
+                    
+                    double valor_mxn = Double.parseDouble(regresarValor.toString());
+                    double valor_dolarhk = 0.40 * valor_mxn;
+                    
+                    JOptionPane.showMessageDialog(
+                        null,
+                        valor_mxn + " MXN => " + valor_dolarhk + " Dolar Hongkones"
+                    );
+                }
+                
+                catch (Exception error){
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "[-]ERROR: Inserta un valor correcto."
+                    );
+                }
+            }
+        
+		}
+	}
+}
+
+        </code></pre>
+        <h4 style="text-align: center;">RUBY</h4>
+        <pre><code>
+                def to_float(string)
+                Float(string)
+            rescue ArgumentError
+                nil
+            end
+            
+            puts "CONVERSION DE MONEDAS
+                    (1) Dolar
+                    (2) Euro
+                    (3) Yen (Japones)
+                    (4) Dolar de Hong Kong"
+            
+            puts "Opcion: "
+            opcion = gets.chomp
+            
+            if opcion == '1'
+                texto = 'Dolar'
+                puts "Escogiste: " + texto
+                print "$MXN: "
+                entrada = gets.chomp
+                mxn = to_float(entrada)
+            
+                if mxn
+                    conv_to_dolar = 0.051 * mxn
+                    conv_to_dolar.to_f
+                    puts "#{mxn}$ MXN => #{conv_to_dolar}$ Dolares"
+                else
+                    puts "Valor invalido."
+                end
+            
+            elsif opcion == '2'
+                texto = 'Euro'
+                puts "Escogiste: " + texto
+            
+                print "$MXN: "
+                entrada = gets.chomp
+                mxn = to_float(entrada)
+            
+                if mxn
+                    conv_to_euro = 0.047 * mxn
+                    conv_to_euro.to_f
+                    puts "#{mxn}$ MXN => #{conv_to_euro}$ Euros"
+                else
+                    puts "Valor invalido."
+                end
+            
+            elsif opcion == '3'
+                texto = 'Yen (Japones)'
+                puts "Escogiste: " + texto
+            
+                print "$MXN: "
+                entrada = gets.chomp
+                mxn = to_float(entrada)
+            
+                if mxn
+                    conv_to_yen = 5.53 * mxn
+                    conv_to_yen.to_f
+                    puts "#{mxn}$ MXN => #{conv_to_yen}$ Yenes"
+                else
+                    puts "Valor invalido."
+                end
+            
+            elsif opcion == '4'
+                texto = 'Dolar de Hong Kong'
+                puts "Escogiste: " + texto
+            
+                print "$MXN: "
+                entrada = gets.chomp
+                mxn = to_float(entrada)
+            
+                if mxn
+                    conv_to_dhk = 0.40 * mxn
+                    conv_to_dhk.to_f
+                    puts "#{mxn}$ MXN => #{conv_to_dhk}$ Dolares Hongkonenses"
+                else
+                    puts "Valor invalido."
+                end
+            
+            else
+                puts "Opcion invalida."
+            end
+            
+            puts "Presiona ENTER para salir."
+            gets.chomp
+            
+        </code></pre>
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea8.html">Anterior (Tarea 8)</a>
+                    <a href="tarea10.html">Siguiente (Tarea 10)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

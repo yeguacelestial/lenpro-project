@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 13</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+        <h1 style="text-align: center;">Tarea 13</h1>
+        <h2 style="text-align: center;">Búsqueda en Vector</h2>
+        <p class="nombre-subtema">Elaborar un programa en JAVA y RUBY que realice una búsqueda de un número en un vector, mostrando solamente un mensaje indicando cuántas veces apareció el número, además de imprimir el vector.<br>Ejemplo:<br>Valor a buscar: 4 <br>"El numero 4 aparece 2 veces en el vector." <br>(1  4  7  9  21  4  0  2  5  2)</p>
+        <h4 style="text-align: center;">JAVA</h4>
+        <pre><code>
+                /*
+                Serie C:
+                2, -3, -5, -7, 4, 6, -9, -11, -13, 8, 10, 12, -15, -17, -19, 14
+             */
+            
+            import java.util.Scanner;
+            
+            public class SerieC {
+                public static void main(String[] args){
+                    //VARIABLES
+                    int i, n;
+                    int valor_pos = 2;
+                    int valor_neg = -3;
+                    int valor = 0;
+                    int cont_pos = 0;
+                    int cont_principal = 0;
+                    Scanner lect = new Scanner(System.in);
+            
+                    //ENTRADA
+                    System.out.print("Valor de n: ");
+                    n = lect.nextInt();
+            
+                    //Secuencia iterativa principal
+                    for (i=0;i < n;i++){
+            
+                        //Contador números par positivos:
+                        if (valor_pos%2 == 0){
+                            //Contador - imprimir numeros positivos 1 vez con incremento de 1
+                            for (int pos = 0; pos <= cont_pos; pos++){
+                                valor = valor_pos;
+                                if (cont_principal == n-1){
+                                    System.out.print(valor + ". \n");
+                                    System.exit(0);
+                                }
+                                System.out.print(valor + ", ");
+                                valor_pos += 2;
+                                cont_principal++;
+                            }
+            
+                            cont_pos++;
+                        }
+            
+                        //Contador números impar negativos:
+                        if (valor_neg%2 != 0){
+                            //Contador - imprimir numeros negativos 3 veces
+                            for (int neg = 0; neg < 3; neg++){
+                                valor = valor_neg;
+                                if (cont_principal == n-1){
+                                    System.out.print(valor + ". \n");
+                                    System.exit(0);
+                                }
+                                System.out.print(valor + ", ");
+                                valor_neg -= 2;
+                                cont_principal++;
+                            }
+                        }
+            
+                    } //FIN SECUENCIA ITERATIVA PRINCIPAL
+            
+                    //Salto de línea final
+                    System.out.println(" ");
+            
+                }
+            }
+        </code></pre>
+        <h4 style="text-align: center;">RUBY</h4>
+        <pre><code>
+                #BUSQUEDA EN VECTOR
+
+                #Convertir a entero
+                def to_int(string)
+                    Integer(string)
+                rescue ArgumentError
+                    nil
+                end
+                
+                #Contador
+                cont = 0
+                
+                print "Tamaño del arreglo: "
+                lectura = gets.chomp
+                
+                tamaño = to_int(lectura)
+                
+                if (tamaño.instance_of? Integer) == true
+                    if tamaño < 0 or tamaño == 0
+                        puts "#{tamaño} no es un tamaño valido."
+                        puts "Presiona ENTER para salir."
+                        gets.chomp
+                        exit
+                    else
+                        vector = Array.new(tamaño)
+                        puts "El tamaño es de #{vector.size}"
+                
+                        #Secuencia iterativa para indices en el vector
+                        for i in 0..vector.size-1 do
+                            print "Posicion[#{i}]: "
+                            pos = gets.chomp
+                            vector[i] = pos
+                        end
+                
+                        #Busqueda del numero
+                        #Lectura
+                        print "Valor a buscar: "
+                        valor = gets.chomp
+                
+                        #Recorrer vector
+                        for i in 0..vector.size-1 do
+                            if valor == vector[i]
+                                cont = cont + 1
+                            end
+                        end
+                
+                        #Impresion
+                        puts "El numero #{valor} aparece #{cont} veces."
+                        puts "Presiona ENTER para salir."
+                        gets.chomp
+                
+                    end
+                
+                else
+                    puts "Valor invalido."
+                    puts "Presiona ENTER para salir."
+                    gets.chomp
+                end
+        </code></pre>
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea12.html">Anterior (Tarea 12)</a>
+                    <a href="tarea14.html">Siguiente (Tarea 14)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

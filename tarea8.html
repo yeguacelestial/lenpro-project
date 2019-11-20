@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 8</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+    <h1 style="text-align: center;">Tarea 8</h1>
+    <h2 style="text-align: center;">Conversión de temperatura</h2>
+    <p class="nombre-subtema">Elabora un programa en JAVA y RUBY que mediante un menu de opciones permita calcular la conversión de escala de temperatura: <br>1. De grados Centígrados a grados Fahrenheit <br>2. De grados Fahrenheit a grados centígrados.</p>
+    <h4 style="text-align: center;">JAVA</h4>
+    <pre><code>
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Main extends JFrame {
+
+    // BOTONES
+    private JButton botonCtoF, botonFtoC;
+
+    public Main(){
+        //TITULO DE LA VENTANA
+        super ("Conversor de temperatura - Hecho por Carlos Nava");
+
+        //CONTENEDOR DE BOTONES
+        Container contenedor = getContentPane();
+        contenedor.setLayout ( new FlowLayout() );
+
+        // CREACION DE BOTONES
+            //BOTON C A F
+        botonCtoF = new JButton("°C=>°F");
+        contenedor.add(botonCtoF);
+
+            //BOTON F A C
+        botonFtoC = new JButton ("°F=>°C");
+        contenedor.add(botonFtoC);
+
+        // Creacion de instancia de clase interna ManejadorBoton
+        // para usarla en el manejo de eventos del boton
+
+        ManejadorBoton manejador = new ManejadorBoton();
+        botonCtoF.addActionListener( manejador );
+        botonFtoC.addActionListener( manejador );
+
+        setSize(500,100);
+        show();
+    } // Fin de constructor Main
+
+    public static void main (String args[]){
+        Main ap = new Main();
+
+        ap.addWindowListener(
+                new WindowAdapter() {
+                    public void windowClosing ( WindowEvent e ){
+                        System.exit(0);
+                    } // Fin del metodo windowClosing
+                } //Fin de clase interna anonima
+        ); //Fin de addWindowListener
+    } //Fin de main
+
+    //Clase interna para el manejo de datos del boton
+    private class ManejadorBoton implements ActionListener {
+        public void actionPerformed ( ActionEvent e ){
+            JOptionPane.showMessageDialog(null,
+                    "Se hará la conversión: " + e.getActionCommand()
+            );
+
+            // CONDICIONES
+
+                // °C => °F
+            if (e.getActionCommand() == "°C => °F"){
+
+                try { // Intentar procesar la información
+                    //Entrada de valores
+                    // CREACION DE OBJETO PARA CAPTURAR VALOR
+                    Object regresarValor = JOptionPane.showInputDialog(
+                            null,
+                            "°C: ",
+                            "°C => °F",
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            null,
+                            null
+                    );
+                    //System.out.println("Objeto => " + regresarValor);
+
+                    // CASTING DE OBJETO A DOUBLE
+                    double valor_c = Double.parseDouble(regresarValor.toString());
+                    //System.out.println("double => " + valor_c);
+
+                    // CONVERSION °C A °F (yay!)
+                    double conv_c_to_f = (valor_c * 1.8) + 32;
+                    //System.out.println(valor_c + "°C => " + conv_c_to_f + "°F");
+                    JOptionPane.showMessageDialog(null,
+                            valor_c + "°C => " + conv_c_to_f + "°F");
+                } //Fin 'try'
+
+                catch (Exception error){ //Si no se introduce un valor válido...
+                    JOptionPane.showMessageDialog(null,
+                            "[-] No se pudo validar tu valor. No intentes hackear mi programa, pls. :-(");
+                }
+
+            }
+
+                // °F => °C
+            if (e.getActionCommand() == "°F => °C"){
+                //System.out.println("Adios mundo xD");
+
+                try {
+                    //Entrada de valores
+                    // CREACION DE OBJETO PARA CAPTURAR VALOR
+                    Object regresarValor = JOptionPane.showInputDialog(
+                            null,
+                            "°F: ",
+                            "°F => °C",
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            null,
+                            null
+                    );
+                    //System.out.println("Objeto => " + regresarValor);
+
+                    // CASTING DE OBJETO A DOUBLE
+                    double valor_f = Double.parseDouble(regresarValor.toString());
+                    //System.out.println("double => " + valor_c);
+
+                    // CONVERSION °F A °C (yay!)
+                    double conv_f_to_c = (valor_f - 32) / (1.8);
+                    //System.out.println(valor_f + "°F => " + conv_f_to_c + "°C");
+                    JOptionPane.showMessageDialog(null,
+                            valor_f + "°F => " + conv_f_to_c + "°C");
+                }
+                catch (Exception error){ //Si no se introduce un valor válido...
+                    JOptionPane.showMessageDialog(null,
+                            "Escribe un valor valido!");
+                }
+            }
+        } // Fin de actionPerformed
+    } //Fin de clase ManejadorBoton
+} //Fin de clase Main
+
+    </code></pre>
+    <h4 style="text-align: center;">RUBY</h4>
+    <pre><code>
+            def to_float(string)
+            Float(string)
+        rescue ArgumentError
+            nil
+        end
+        
+        puts "CONVERSOR DE TEMPERATURA"
+        puts "MENU:
+            (1) °C => °F
+            (2) °F => °C"
+        print "Opcion: "
+        opcion = gets.chomp
+        
+        if opcion == '1'
+            texto = "°C => °F"
+            puts "Escogiste: " + texto
+        
+            print "°C:"
+            entrada = gets.chomp
+            temp_c = to_float(entrada)
+        
+            if temp_c
+                conv_c_to_f = (temp_c * 1.8) + 32
+                conv_c_to_f.to_f
+                puts "#{temp_c}°C => #{conv_c_to_f}°F"
+            else
+                puts "Valor invalido."
+            end
+        
+        elsif opcion == '2'
+            texto = "F => °C"
+            puts "Escogiste: " + texto
+        
+            print "°F: "
+            entrada = gets.chomp
+            temp_f = to_float(entrada)
+        
+            if temp_f
+                conv_f_to_c = (temp_f - 32) / 1.8
+                conv_f_to_c.to_f
+                puts "#{temp_f}°F => #{conv_f_to_c}°C"
+                
+            else
+                puts "Valor invalido."
+            end
+            
+        else
+            puts "Opcion invalida."
+        end
+        puts "Presiona ENTER para salir."
+        gets.chomp
+    </code></pre>
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea7.html">Anterior (Tarea 7)</a>
+                    <a href="tarea9.html">Siguiente (Tarea 9)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 14</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+        <h1 style="text-align: center;">Tarea 14</h1>
+        <h2 style="text-align: center;">Búsqueda en Matriz</h2>
+        <p class="nombre-subtema">Construya un programa en JAVA y RUBY que al recibir como datos un arreglo bidimensional de NxM elementos de tipo entero y un número entero, determine cuántas veces se encuentra este número dentro del arreglo. Además, que imprima la matriz al final. <br>Ejemplo: <br>Elemento a buscar: 8 <br>El 8 aparece 3 veces. <br> 1  21  89  -2  <br>8  7  340  5 <br>6  -5  0  2 <br>21  11  8  8</p>
+        <h4 style="text-align: center;">JAVA</h4>
+        <pre><code>
+
+import java.util.Scanner;
+
+public class BusquedaEnMatriz {
+    public static void main (String[] args){
+        //VARIABLES
+        int elemento,in,im;
+        int contador = 0;
+        Scanner lect = new Scanner(System.in);
+
+        //Filas
+        int n;
+
+        //Columnas
+        int m;
+
+        //Pedir n (filas)
+        System.out.print("Tamaño de n: ");
+        n = lect.nextInt();
+
+        if (n==0 || n < 0){
+            System.out.print("[-]Valor de n no valido. Saliendo...");
+            System.out.println("");
+            System.exit(0);
+        }
+
+        //Pedir m (columnas)
+        System.out.print("Tamaño de m: ");
+        m = lect.nextInt();
+
+        if (m==0 || m < 0){
+            System.out.print("[-]Valor de m no valido. Saliendo...");
+            System.out.println("");
+            System.exit(0);
+        }
+
+        //Creacion de vector
+        int[][] vector = new int[n][m];
+
+        //Entrada de arreglos
+        //Filas
+        for (in=0;in < n;in++){
+            //Columnas
+            for (im=0;im < m;im++){
+                System.out.print("Posicion["+in+"]["+im+"]: ");
+                vector[in][im] = lect.nextInt();
+            }
+        }
+
+        //IMPRESION DE INDICES EN EL ARREGLO
+        for (in=0;in < n;in++){
+            for (im=0;im < m;im++){
+                System.out.print(vector[in][im] + ", ");
+            }
+            //Salto de linea al acabar una fila
+            System.out.println("");
+        }
+        System.out.println("");
+
+        //Numero a comparar
+        System.out.print("Elemento a buscar: ");
+        elemento = lect.nextInt();
+
+        for (in=0;in < n;in++){
+            for (im=0;im < m;im++){
+                if (vector[in][im] == elemento){
+                    contador++;
+                }
+            }
+        }
+
+        System.out.print("El elemento " + elemento + " aparece " + contador + " veces.");
+        System.out.println("");
+    }
+}
+        </code></pre>
+
+        <h4 style="text-align: center;">RUBY</h4>
+        <pre><code>
+                =begin
+                Busqueda en Matriz
+            =end
+            
+            #Convertir a entero
+            def to_int(string)
+                Integer(string)
+            rescue ArgumentError
+                nil
+            end
+            
+            #Inicialización de variables
+            contador = 0
+            
+            #Pedir n filas
+            print "Tamaño de n(filas): "
+            lectura = gets.chomp
+            n = to_int(lectura)
+            
+            if (n.instance_of? Integer) == true
+            
+                if n > 0
+                    #Pedir m columnas
+                    print "Tamaño de m(columnas): "
+                    lectura = gets.chomp
+                    m = to_int(lectura)
+                    
+                    if (m.instance_of? Integer) == true
+                        if m > 0
+                            #Creacion de mateiz bidimensional
+                            matriz = Array.new(n){Array.new(m)}
+            
+                            #Entrada de datos
+                            #Filas
+                            for ifil in 0..n-1 do
+                                #Columnas
+                                for icol in 0..m-1 do
+                                    print "Posicion[#{ifil}][#{icol}]: "
+                                    matriz[ifil][icol] = gets.chomp
+                                end
+                            end
+            
+                            #Impresion de indices en el arreglo
+                            for ifil in 0..n-1 do
+                                for icol in 0..m-1 do
+                                    print "#{matriz[ifil][icol]}, "
+                                end
+                                print "\n"
+                            end
+                            print "\n"
+            
+                            #Numero a comparar
+                            print "Elemento a buscar: "
+                            elemento = gets.chomp
+            
+                            for ifil in 0..n-1 do
+                                for icol in 0..m-1 do
+                                    if matriz[ifil][icol] == elemento
+                                        contador += 1
+                                    end
+                                end
+                            end
+            
+                            puts "El elemento #{elemento} aparece #{contador} veces."
+                            
+                        else
+                            puts "El tamaño de columnas debe ser mayor a 0."
+                        end
+                    else
+                        puts "Tamaño de columnas invalido."
+                        print "Presiona ENTER para salir."
+                        gets.chomp
+                        exit
+                    end
+            
+                else
+                    puts "El tamaño de filas debe ser mayor a 0."
+                    print "Presiona ENTER para salir."
+                    gets.chomp
+                    exit
+                end
+                print "Presiona ENTER para salir."
+                gets.chomp
+            else
+                puts "Valor de filas invalido."
+                print "Presiona ENTER para salir."
+                gets.chomp
+                exit
+            end
+            
+        </code></pre>
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea13.html">Anterior (Tarea 13)</a>
+                    <a href="tarea15.html">Siguiente (Tarea 15)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

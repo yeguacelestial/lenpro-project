@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 16</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:400,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+
+<body>
+    <header class="site-header-paginas">
+        <div class="contenedor">
+            <div class="barra">
+                <a href="/">
+                    <h1 class="no-margin">Carlos<span>Nava</span></h1>
+                </a>
+                <nav class="navegacion">
+                    <a href="index.html">Inicio</a>
+                    <a href="personales.html">Personales</a>
+                    <a href="tareas.html">Tareas</a>
+                </nav>
+            </div> <!--cierre de barra-->
+        </div> <!--cierre contenedor-->
+    </header>
+
+<main>
+        <h1 style="text-align: center;">Tarea 16</h1>
+        <h2 style="text-align: center;">Multiplicacion de matrices</h2>
+        <p class="nombre-subtema">Elaborar un programa en JAVA y RUBY que calcule la multiplicación de dos matrices que ingrese el usuario. (nota: validar lo que sea necesario para poder realizar la multiplicación de matrices.)</p>
+        <h4 style="text-align: center;">JAVA</h4>
+        <pre><code>
+                //MULTIPLICACION DE DOS MATRICES
+                import java.util.Scanner;
+                
+                public class MultiplicacionDeMatrices {
+                    public static void main (String[] args){
+                        //Variable de lectura
+                        Scanner lect = new Scanner(System.in);
+                
+                        //Variables de tamaños de matrices e iteración
+                        int n1,m1,n2,m2,i1,j1,i2,j2;
+                
+                        //Preguntar por el tamaño de matrices
+                        System.out.print("MATRIZ 1 - Filas (n1): ");
+                        n1 = lect.nextInt();
+                        System.out.print("MATRIZ 1 - Columnas (m1): ");
+                        m1 = lect.nextInt();
+                
+                        System.out.print("MATRIZ 2 - Filas (n2): ");
+                        n2 = lect.nextInt();
+                        System.out.print("MATRIZ 2 - Columnas (m2): ");
+                        m2 = lect.nextInt();
+                
+                        //CONDICION PARA QUE SE PUEDA HACER LA MULTIPLICACION:
+                        //m1 = n2
+                        //De lo contrario, se invalida el programa
+                
+                        if (m1 == n2){
+                            //ESTRUCTURA PRINCIPAL DEL PROGRAMA
+                
+                            //Creacion de matrices
+                            int[][] matriz1 = new int[n1][m1];
+                            int[][] matriz2 = new int[n2][m2];
+                            int[][] matriz_resultante = new int[n1][m2];
+                
+                            //Secuencia iterativa para introducir datos en matrices:
+                            for (i1 = 0; i1 < n1; i1++){ //Filas matriz 1
+                                for (j1=0; j1 < m1; j1++){ //Columnas matriz 1
+                                    System.out.print("M1 - Posicion["+i1+"]["+j1+"] = ");
+                                    matriz1[i1][j1] = lect.nextInt();
+                                }
+                            }
+                
+                            for (i2 = 0; i2 < n2; i2++){ //Filas matriz 2
+                                for (j2 = 0; j2 < m2;j2++){ //Columnas matriz 2
+                                    System.out.print("M2 - Posicion["+i2+"]["+j2+"] = ");
+                                    matriz2[i2][j2] = lect.nextInt();
+                                }
+                            }
+                
+                            //MATRIZ RESULTANTE
+                            for (i1=0;i1 < n1;i1++){
+                                for (j2=0;j2 < m2;j2++){
+                                    matriz_resultante[i1][j2] = 0;
+                                    for (int k=0;k < m1;k++){
+                                        matriz_resultante[i1][j2] += matriz1[i1][k] * matriz2[k][j2];
+                                    }
+                                }
+                            }
+                
+                            //Impresion de matrices
+                
+                            //MATRIZ 1
+                            System.out.println("MATRIZ 1: ");
+                            for (i1=0;i1 < n1;i1++){
+                                for(j1=0;j1 < m1;j1++){
+                                    System.out.print(matriz1[i1][j1] + " ");
+                                }
+                                System.out.println(" ");
+                            }
+                            System.out.println(" ");
+                
+                            //MATRIZ 2
+                            System.out.println("MATRIZ 2: ");
+                            for (i2=0;i2 < n2;i2++){
+                                for (j2=0;j2 < m2;j2++){
+                                    System.out.print(matriz2[i2][j2] + " ");
+                                }
+                                System.out.println(" ");
+                            }
+                            System.out.println(" ");
+                
+                            //MATRIZ RESULTANTE:
+                            System.out.println("MATRIZ RESULTANTE: ");
+                            for (i1 = 0; i1 < n1;i1++){
+                                for (j2 = 0; j2 < m2;j2++){
+                                    System.out.print(matriz_resultante[i1][j2] + " ");
+                                }
+                                System.out.println(" ");
+                            }
+                
+                        }
+                
+                        else {
+                            System.out.print("[-]Error: m1 debe ser igual a n2.");
+                            System.out.print("Saliendo...");
+                            System.out.println(" ");
+                            System.exit(0);
+                        }
+                
+                    }
+                }
+        </code></pre>
+
+        <h4 style="text-align: center;">RUBY</h4>
+        <pre><code>
+                =begin
+                Multiplicacion de matrices
+                =end
+                
+                #Convertir a entero
+                def to_int(string)
+                    Integer(string)
+                rescue ArgumentError
+                    nil
+                end
+                
+                #Preguntar por el tamaño de las matrices
+                print "M1 - Filas (n1): "
+                lect = gets.chomp
+                n1 = to_int(lect)
+                print "M1 - Columnas (m1): "
+                lect = gets.chomp
+                m1 = to_int(lect)
+                print "M2 - Filas (n2): "
+                lect = gets.chomp
+                n2 = to_int(lect)
+                print "M2 - Columnas (m2): "
+                lect = gets.chomp
+                m2 = to_int(lect)
+                
+                #Si el numero de columnas de M1 es igual al numero de filas de M2
+                if m1 == n2
+                    matriz1 = Array.new(n1){Array.new(m1)}
+                    matriz2 = Array.new(n2){Array.new(m2)}
+                    matriz_resultante = Array.new(n1){Array.new(m2)}
+                
+                    #Secuencia iterativa de entrada
+                    #MATRIZ 1
+                    #Filas
+                    for i in 0..n1-1 do
+                        #Columnas
+                        for j in 0..m1-1 do
+                            print "M1 - Posicion[#{i}][#{j}]: "
+                            lect = gets.chomp
+                            matriz1[i][j] = to_int(lect)
+                        end
+                    end
+                
+                    #MATRIZ 2
+                    #Filas
+                    for i in 0..n2-1 do
+                        #Columnas
+                        for j in 0..m2-1 do
+                            print "M2 - Posicion[#{i}][#{j}]: "
+                            lect = gets.chomp
+                            matriz2[i][j] = to_int(lect)
+                        end
+                    end
+                
+                    #MATRIZ RESULTANTE
+                    for ir in 0..n1-1 do
+                        for jr in 0..m2-1 do
+                            matriz_resultante[ir][jr] = 0
+                            for k in 0..m1-1 do
+                                matriz_resultante[ir][jr] += matriz1[ir][k] * matriz2[k][jr]
+                            end
+                        end
+                    end
+                
+                    #Impresion de matrices
+                
+                    #Matriz 1
+                    puts "MATRIZ 1"
+                    for i in 0..n1-1 do
+                        for j in 0..m1-1 do
+                            print "#{matriz1[i][j]} "
+                        end
+                        puts " "
+                    end
+                    puts " "
+                
+                    #Matriz 2
+                    puts "MATRIZ 2"
+                    for i in 0..n2-1 do
+                        for j in 0..m2-1 do
+                            print "#{matriz2[i][j]} "
+                        end
+                        puts " "
+                    end
+                    puts " "
+                
+                    #Matriz resultante
+                    puts "MATRIZ RESULTANTE: "
+                    for i in 0..n1-1 do
+                        for j in 0..m2-1 do
+                            print "#{matriz_resultante[i][j]} "
+                        end
+                        puts " "
+                    end
+                    
+                else
+                    puts "Error: m1 debe ser igual a n2."
+                end
+        </code></pre>
+</main>
+
+    <footer class="site-footer">
+        <div class="contenedor">
+            <div class="barra">
+                <p class="no-margin">Carlos<span>Nava</span></p>
+                <nav class="navegacion">
+                    <a href="tarea15.html">Anterior (Tarea 15)</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
